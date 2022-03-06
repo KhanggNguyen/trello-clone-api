@@ -1,11 +1,12 @@
 import express from 'express'
 const app = express()
-
-import dotenv from 'dotenv'
-dotenv.config()
+import { env } from '*/config/environtments.js';
+import { connectDB } from './config/mongodb.js'
 
 const hostname = 'localhost'
-const port = process.env.PORT || 5000
+const port = env.PORT || 5000
+
+connectDB().catch(console.log)
 
 app.listen(port, hostname, () =>
     console.log(`Server started on ${hostname}:${port}`)
