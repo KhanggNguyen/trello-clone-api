@@ -1,13 +1,16 @@
 import express from 'express'
 
 import { env } from '*/config/environtments.js'
-import { connectDB, getDB } from '*/config/mongodb.js'
+import { connectDB} from '*/config/mongodb.js'
 
 const hostname = env.HOST || 'localhost'
 const port = env.PORT || 5000
 
 //MODELS
-import { BoardModel } from '*/models/boards.js'
+import { BoardModel } from '*/models/board.model'
+
+//ROUTES
+import router  from '*/routes'
 
 //CONNECT TO DB
 connectDB()
@@ -20,6 +23,10 @@ connectDB()
 
 const startServer = () => {
     const app = express()
+
+    app.use(express.json())
+    
+    app.use('/api', router)
 
     app.listen(port, hostname, () =>
         console.log(`Server started on ${hostname}:${port}`)
