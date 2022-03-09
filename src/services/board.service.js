@@ -14,6 +14,9 @@ const getBoard = async (id) => {
     try {
         const board = await BoardModel.getBoardById(id)
 
+        if(!board || !board.columns)
+            throw new Error("No board found.");
+
         //TODO: sort columns by columnOrder
 
         board.columns.forEach((column) => {

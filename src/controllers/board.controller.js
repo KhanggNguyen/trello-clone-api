@@ -2,9 +2,9 @@ import { HttpStatusCode } from '*/utils/constants'
 import { BoardService } from '*/services/board.service'
 
 const getBoard = async (req, res) => {
-    const { id } = req.params
-
+    console.log("GET BOARD REQUEST");
     try {
+        const { id } = req.params
         const result = await BoardService.getBoard(id)
         console.log(result)
         res.status(HttpStatusCode.OK).json(result)
@@ -19,7 +19,6 @@ const createBoard = async (req, res) => {
     try {
         console.log('CREATE BOARD REQUEST')
         const result = await BoardService.createBoard(req.body)
-        console.log(result)
         res.status(HttpStatusCode.CREATED).json(result)
     } catch (error) {
         res.status(HttpStatusCode.INTERNAL_SERVER).json({
