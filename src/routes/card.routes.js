@@ -1,7 +1,7 @@
 import express from 'express'
 const router = express.Router()
-import { CardValidator } from '*/validators/Card.validator'
-import { CardController } from '*/controllers/Card.controller'
+import { CardValidator } from '*/validators/card.validator'
+import { CardController } from '*/controllers/card.controller'
 router
     .route('/')
     //.get((req, res) => res.send('Working'))
