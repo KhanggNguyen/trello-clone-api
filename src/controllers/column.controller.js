@@ -1,5 +1,5 @@
 import { HttpStatusCode } from '*/utils/constants'
-import { ColumnService } from '*/services/Column.service'
+import { ColumnService } from '*/services/column.service'
 
 const getColumns = async (req, res) => {
     console.log('GET COLUMNS REQUEST')

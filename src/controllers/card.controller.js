@@ -1,5 +1,5 @@
 import { HttpStatusCode } from '*/utils/constants'
-import { CardService } from '*/services/Card.service'
+import { CardService } from '*/services/card.service'
 
 const getCards = async (req, res) => {
     console.log('GET CARDS REQUEST')
