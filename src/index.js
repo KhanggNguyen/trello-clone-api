@@ -28,7 +28,7 @@ const startServer = () => {
     
     app.use('/api', router)
 
-    app.listen(port, () =>
+    app.listen(port, hostname, () =>
         console.log(`Server started on ${hostname}:${port}`)
     )
 }
