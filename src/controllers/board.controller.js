@@ -1,6 +1,19 @@
 import { HttpStatusCode } from '*/utils/constants'
 import { BoardService } from '*/services/board.service'
 
+const getAllBoard = async (req, res) => {
+    console.log("GET ALL BOARDS REQUEST");
+
+    try{
+        const result = await BoardService.getAllBoard();
+        res.status(HttpStatusCode.OK).json(result);
+    }catch(error){
+        res.status(HttpStatusCode.INTERNAL_SERVER).json({
+            error:error.message
+        })
+    }
+}
+
 const getBoard = async (req, res) => {
     console.log("GET BOARD REQUEST");
     try {
@@ -27,4 +40,4 @@ const createBoard = async (req, res) => {
     }
 }
 
-export const BoardController = { getBoard, createBoard }
+export const BoardController = { getBoard, createBoard, getAllBoard  }

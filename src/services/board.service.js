@@ -1,6 +1,15 @@
 import { HttpStatusCode } from '*/utils/constants'
 import { BoardModel } from '*/models/board.model'
 
+const getAllBoard = async () => {
+    try{
+        const result = await BoardModel.getAllBoard()
+        return result;
+    }catch(error){
+        throw new Error(error)
+    }
+}
+
 const createBoard = async (data) => {
     try {
         const result = await BoardModel.create(data)
@@ -33,4 +42,4 @@ const getBoard = async (id) => {
     }
 }
 
-export const BoardService = { createBoard, getBoard }
+export const BoardService = { createBoard, getBoard, getAllBoard }

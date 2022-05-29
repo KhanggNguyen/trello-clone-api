@@ -18,6 +18,35 @@ const validateSchema = async (data) => {
     return await schema.validateAsync(data, { abortEarly: false })
 }
 
+const getAllBoard = async () => {
+    try{
+        const result = await getDB()
+            .collection(collectionName)
+            .aggregate([
+                {
+                    $lookup: {
+                        from: ColumnModel.collectionName,
+                        localField: '_id',
+                        foreignField: 'boardId',
+                        as: 'columns',
+                    },
+                },
+                {
+                    $lookup: {
+                        from: CardModel.collectionName,
+                        localField: '_id',
+                        foreignField: 'boardId',
+                        as: 'cards',
+                    },
+                },
+            ])
+            .toArray()
+        return result[0] || {}
+    }catch(error){
+        throw new Error(error);
+    }
+}
+
 const create = async (data) => {
     try {
         const value = await validateSchema(data)
@@ -92,4 +121,4 @@ const pushColumnOrder = async (boardId, columnId) => {
     }
 }
 
-export const BoardModel = { create, getBoardById, pushColumnOrder }
+export const BoardModel = { getAllBoard, create, getBoardById, pushColumnOrder }

@@ -6,9 +6,6 @@ import { connectDB} from '*/config/mongodb.js'
 const hostname = env.HOST || 'localhost'
 const port = env.PORT || 5000
 
-//MODELS
-import { BoardModel } from '*/models/board.model'
-
 //ROUTES
 import router  from '*/routes'
 
