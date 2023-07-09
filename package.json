@@ -1,6 +1,7 @@
 {
     "name": "trello-api",
     "version": "1.0.0",
+    "type": "module",
     "description": "APIs for trello clone",
     "main": "index.js",
     "scripts": {
